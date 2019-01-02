@@ -1,0 +1,51 @@
+@import '../../index.scss';
+
+.title {
+  margin: 50px 0;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.registerView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__input {
+    width: 400px;
+    height: 60px;
+    margin-top: 10px;
+    outline: none;
+    padding-left: 10px;
+    // text-transform: lowercase;
+  }
+  &__input::placeholder {
+    color: rgb(189, 189, 189);
+    font-size: 1.2rem;
+  }
+  &__button {
+    color: #fefefe;
+    width: 400px;
+    height: 60px;
+    margin-top: 10px;
+    background-color: $brand-color;
+  }
+  &__button:hover {
+    background-color: #17aba6;
+  }
+  &__warning {
+    color: $brand-color;
+    font-size: 1.4rem;
+  }
+  .my-facebook-button-class {
+    color: #fefefe;
+    width: 400px;
+    height: 60px;
+    margin-top: 10px;
+    background-color: #385693;
+  }
+  .my-facebook-button-class:hover {
+    background-color: #2c4474;
+  }
+}

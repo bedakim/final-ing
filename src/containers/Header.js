@@ -48,9 +48,10 @@ class Header extends Component {
                   <Link to="/cart/">장바구니</Link>
                 </li>
                 <li className="members__li">새벽배송 지역검색</li>
-                <li>
+                <li className="members__li">
                   <Link to="/event/">이벤트 게시판</Link>
                 </li>
+                <li className="members__li">고객센터</li>
               </div>
             </div>
           </>

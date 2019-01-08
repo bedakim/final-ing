@@ -70,10 +70,10 @@ class Order extends Component {
     // }
     const { fullTotal, address, cartItemPk } = this.state;
     const { date } = this.props;
-    console.log('쥬소', address);
-    console.log('가격', fullTotal);
-    console.log('날짜', date);
-    console.log('카트', cartItemPk);
+    // console.log('쥬소', address);
+    // console.log('가격', fullTotal);
+    // console.log('날짜', date);
+    // console.log('카트', cartItemPk);
     const res = await api.post('/order/', {
       address: address,
       delivery_date: date,

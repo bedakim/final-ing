@@ -23,6 +23,7 @@ class Order extends Component {
       fullTotal: 0,
       date: '날짜',
       cartItemPk: [],
+      \\ p?
     };
   }
   async componentDidMount() {

@@ -12,7 +12,7 @@ class CommentView extends Component {
     return (
       <div className="review-list">
         {comment_set.map(i => (
-          <section className="review-box">
+          <section key={i.item} className="review-box">
             <div className="left-wrap">
               <div className="star-score-bg">
                 <div className="star-score" />

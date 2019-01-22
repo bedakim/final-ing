@@ -23,9 +23,31 @@ class Order extends Component {
       fullTotal: 0,
       date: '날짜',
       cartItemPk: [],
-      \\ p?
     };
   }
+  // async componentDidMount() {
+  //   const { cartItems } = this.state;
+  //   let fullTotal = 0;
+  //   let cartItemPk = [];
+  //   const { data } = await api.get('/cart/');
+  //   console.log(data);
+  //   data.forEach(item => {
+  //     fullTotal += item.item.sale_price * item.amount;
+  //     cartItemPk.push({ cart_item_pk: item.cart_item_pk });
+  //     this.setState({
+  //       cartItems: data,
+  //       fullTotal,
+  //       cartItemPk,
+  //     });
+  //     let fee = false;
+  //     if (fullTotal < 40000 && !fee) {
+  //       fee = true;
+  //       fullTotal += 2500;
+  //     } else {
+  //       return fullTotal;
+  //     }
+  //   });
+  // }
   async componentDidMount() {
     const { cartItems } = this.state;
     let fullTotal = 0;
@@ -40,11 +62,18 @@ class Order extends Component {
         fullTotal,
         cartItemPk,
       });
-      if (fullTotal < 40000) {
-        return (fullTotal += 2500);
-      } else {
-        return fullTotal;
+      while (true) {
+        if (fullTotal < 40000) {
+          fullTotal += 2500;
+          break;
+        } else {
+          alert('왜');
+        }
       }
+
+      // else {
+      //   return fullTotal;
+      // }
     });
   }
   handleAddress(e) {
@@ -331,19 +360,22 @@ class Cart extends Component {
   }
 
   async handleDeleteItem({ cart_item_pk }) {
-    const { data } = await api.delete('/cart/', {
-      data: { cart_item_pk },
-    });
-    let fullTotal = 0;
-    data.forEach(item => {
-      fullTotal += item.item.sale_price * item.amount;
-    });
-    this.setState({
-      cartItems: data,
-      fullTotal,
-    });
+    try {
+      const { data } = await api.delete('/cart/', {
+        data: { cart_item_pk },
+      });
+      let fullTotal = 0;
+      data.forEach(item => {
+        fullTotal += item.item.sale_price * item.amount;
+      });
+      this.setState({
+        cartItems: data,
+        fullTotal,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
-
   toggle() {
     this.setState({
       modal: !this.state.modal,

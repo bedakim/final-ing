@@ -25,29 +25,6 @@ class Order extends Component {
       cartItemPk: [],
     };
   }
-  // async componentDidMount() {
-  //   const { cartItems } = this.state;
-  //   let fullTotal = 0;
-  //   let cartItemPk = [];
-  //   const { data } = await api.get('/cart/');
-  //   console.log(data);
-  //   data.forEach(item => {
-  //     fullTotal += item.item.sale_price * item.amount;
-  //     cartItemPk.push({ cart_item_pk: item.cart_item_pk });
-  //     this.setState({
-  //       cartItems: data,
-  //       fullTotal,
-  //       cartItemPk,
-  //     });
-  //     let fee = false;
-  //     if (fullTotal < 40000 && !fee) {
-  //       fee = true;
-  //       fullTotal += 2500;
-  //     } else {
-  //       return fullTotal;
-  //     }
-  //   });
-  // }
   async componentDidMount() {
     const { cartItems } = this.state;
     let fullTotal = 0;
@@ -62,20 +39,14 @@ class Order extends Component {
         fullTotal,
         cartItemPk,
       });
-      while (true) {
-        if (fullTotal < 40000) {
-          fullTotal += 2500;
-          break;
-        } else {
-          alert('왜');
-        }
+      if (fullTotal < 40000) {
+        fullTotal += 2500;
+      } else {
+        return fullTotal;
       }
-
-      // else {
-      //   return fullTotal;
-      // }
     });
   }
+
   handleAddress(e) {
     const { fullTotal, cartItemPk } = this.state;
     const { date } = this.props;
@@ -100,10 +71,7 @@ class Order extends Component {
     // }
     const { fullTotal, address, cartItemPk } = this.state;
     const { date } = this.props;
-    // console.log('쥬소', address);
-    // console.log('가격', fullTotal);
-    // console.log('날짜', date);
-    // console.log('카트', cartItemPk);
+
     const res = await api.post('/order/', {
       address: address,
       delivery_date: date,
@@ -305,6 +273,7 @@ class Cart extends Component {
       fullTotal: 0,
       OrderData: '',
       amount: 0,
+      fullTotal: 0,
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -499,10 +468,14 @@ class CartItems extends Component {
       onQuantityChange,
       onDelete,
       onChange,
+      fullTotal,
     } = this.props;
-    const totalPrice = sale_price * amount;
-    // const fullPrice = totalPrice ;
-    console.log('훅댜ㅐ햐ㅐㅐㅑ', cart_item_pk);
+
+    let totalPrice = sale_price * amount;
+    let arr = 0;
+    arr += fullTotal;
+    console.log('arr', arr);
+
     return (
       <>
         <div className="Cart__CartItems-lists">
@@ -546,6 +519,10 @@ class CartItems extends Component {
           >
             &times;
           </button>
+        </div>
+        <div>
+          총 구매가격
+          <p>{fullTotal}원</p>
         </div>
       </>
     );

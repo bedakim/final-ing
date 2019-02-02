@@ -38,7 +38,7 @@
 - `git branch -a`: remote 저장소와 내 로컬에 있는 branch를 한 꺼번에 보고 싶을 때
 - `git branch '새로 만들 branch의 이름'`: git branch 만들기
 - `git checkout (갈아타고 싶은 branch의 이름)`: 브런치 이동하기
-- `git merge` :일단 보여주고 머지하기!!!!!!!!!!!
+
 
 ## 개발환경 환경변수 설정하기
 

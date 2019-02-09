@@ -90,6 +90,3 @@ function loadStories() {
 
 configure(loadStories, module);
 ```
-
-스토리북에서 `<Link />` 컴포넌트 사용할 수 있도록 설정하기 ([공식 문서 링크](https://github.com/gvaldambrini/storybook-router/tree/master/packages/react))
-
